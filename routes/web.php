@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $articles = \App\Models\Article::all();
+    $articles = \App\Models\Article::take(6)->get();
     return view('pages.home', compact('articles'));
 })->name('pages.home');
 
