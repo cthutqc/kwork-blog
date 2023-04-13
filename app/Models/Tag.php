@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Article extends Model
+class Tag extends Model
 {
     use HasFactory, SoftDeletes, HasSlug;
 
@@ -25,23 +24,8 @@ class Article extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function user():BelongsTo
+    public function articles():BelongsToMany
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tags():BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
-    public function category():BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function getShortenTextAttribute():string
-    {
-        return \Str::limit($this->attributes['text'], 100, '...');
+        return $this->belongsToMany(Article::class);
     }
 }

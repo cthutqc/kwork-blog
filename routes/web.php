@@ -21,8 +21,8 @@ Route::middleware('guest')->group(function () {
         ->name('pages.login');
 
     Route::get('/reset-password', function (string $token) {})->name('password.reset');
-});
 
-Route::get('/reset-password/{token}', function ($token) {
-    return view('pages.reset-password', ['token' => $token]);
-})->name('password.reset');
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('pages.reset-password', ['token' => $token]);
+    })->name('password.reset');
+});

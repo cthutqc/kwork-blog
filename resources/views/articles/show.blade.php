@@ -17,8 +17,15 @@
                 <x-article-row title="Текст">
                     {!! $article->text !!}
                 </x-article-row>
+                @if(count($article->tags))
                 <x-article-row title="Теги">
+                    <div class="flex flex-wrap items-center ">
+                    @foreach($article->tags as $tag)
+                        <div class="p-2 text-[#1386d1] border my-1 mr-2 block border-slate-100 bg-[#f2f8fd] rounded-md">{{$tag->name}}</div>
+                    @endforeach
+                    </div>
                 </x-article-row>
+                @endif
                 <x-article-row title="Комментарии">
                 </x-article-row>
             </div>
