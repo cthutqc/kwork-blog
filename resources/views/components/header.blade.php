@@ -28,7 +28,11 @@
                 </div>
             </div>
             <div>
-                account
+                @auth
+                    <a href="#">{{auth()->user()->name}}</a>
+                @else
+                    <a href="{{route('pages.login')}}">Войти</a>
+                @endauth
             </div>
         </div>
     </x-container>

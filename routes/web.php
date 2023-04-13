@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     $articles = \App\Models\Article::take(6)->get();
     return view('pages.home', compact('articles'));
@@ -26,3 +15,14 @@ Route::get('articles/{article:slug}', \App\Http\Controllers\ArticleController::c
 
 Route::get('categories/{category:slug}', \App\Http\Controllers\CategoryController::class)
     ->name('categories.show');
+
+Route::middleware('guest')->group(function () {
+    Route::get('login', \App\Http\Controllers\LoginController::class)
+        ->name('pages.login');
+
+    Route::get('/reset-password', function (string $token) {})->name('password.reset');
+});
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('pages.reset-password', ['token' => $token]);
+})->name('password.reset');
