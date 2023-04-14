@@ -12,7 +12,7 @@ class ArticleController extends Controller
      */
     public function __invoke(Article $article):View
     {
-        $article->load('tags');
+        $article->load('tags', 'comments.user');
 
         return view('articles.show', compact('article'));
     }

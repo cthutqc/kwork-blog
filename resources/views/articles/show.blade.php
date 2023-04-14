@@ -7,6 +7,14 @@
                 <x-h1>
                     {{$article->h1 ?? $article->name}}
                 </x-h1>
+                <div
+                    x-data="{}">
+                    <button
+                        class="block text-white"
+                        @click.prevent="window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })"
+                        @scroll.window="currentScrollPosition = window.pageYOffset"
+                    >Комментариев: {{count($article->comments)}}</button>
+                </div>
                 {{ Breadcrumbs::render('article', $article) }}
             </div>
         </x-container>
@@ -26,8 +34,7 @@
                     </div>
                 </x-article-row>
                 @endif
-                <x-article-row title="Комментарии">
-                </x-article-row>
+                <livewire:comments :article="$article"/>
             </div>
             <div>
                 sidebar
