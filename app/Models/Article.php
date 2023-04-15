@@ -51,6 +51,11 @@ class Article extends Model
         return $this->hasMany(Rating::class);
     }
 
+    public function avgRating()
+    {
+        return round($this->ratings->avg('score'));
+    }
+
     public function getShortenTextAttribute():string
     {
         return \Str::limit($this->attributes['text'], 100, '...');

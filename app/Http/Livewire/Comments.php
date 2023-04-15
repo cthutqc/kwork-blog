@@ -30,7 +30,7 @@ class Comments extends Component
             ->select('created_at')
             ->first();
 
-        if(Carbon::parse($lastUserComment->created_at)->diffInMinutes() < 1) {
+        if($lastUserComment && Carbon::parse($lastUserComment->created_at)->diffInMinutes() < 1) {
             session()->flash('error', 'Вы оставляли комментарий менее минуты назад, пожалуйста подождите.');
             return;
         }
