@@ -46,6 +46,11 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function ratings():HasMany
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function getShortenTextAttribute():string
     {
         return \Str::limit($this->attributes['text'], 100, '...');
