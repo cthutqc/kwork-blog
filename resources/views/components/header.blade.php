@@ -1,4 +1,4 @@
-<div class="bg-[#090b52] w-full block fixed inset-x-0 top-0 z-50 text-white">
+<div class="bg-[#090b52] w-full block fixed inset-x-0 top-0 z-50 text-white z-20">
     <x-container>
         <div class="flex justify-between items-center w-full">
             <div class="flex justify-start items-center space-x-4 flex-wrap">
@@ -9,7 +9,7 @@
                     <button @click="open = !open" class="py-4">
                         <span class="block">Категории</span>
                     </button>
-                    <div x-show="open" @click.away="open = false" class="lg:w-max text-black p-4 bg-white shadow fixed inset-0 lg:h-fit lg:absolute lg:top-full">
+                    <div x-show="open" @click.away="open = false" class="lg:w-max text-black p-4 bg-white shadow fixed inset-0 lg:h-fit lg:absolute lg:top-full block">
                         <ul class="block text-center lg:text-left">
                             @foreach($categories as $category)
                                 <li>

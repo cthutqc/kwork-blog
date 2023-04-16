@@ -1,4 +1,4 @@
-<div class="bg-[#191919] w-full py-2 md:py-10 text-white fixed bottom-0 inset-x-0 z-50 md:z-0 md:relative">
+<div class="bg-[#191919] w-full py-2 md:py-10 text-white fixed bottom-0 inset-x-0 z-50 md:z-0 md:relative z-20">
     <x-container>
         <div class="flex justify-between items-center md:hidden">
             <a href="{{route('pages.home')}}" class="space-y-2">
@@ -10,7 +10,7 @@
                     <img src="{{asset('images/search1.png')}}" class="w-6 h-6 m-auto">
                     <span>Поиск</span>
                 </button>
-                <div x-show="open" class="fixed inset-0 bg-black bg-opacity-80 z-[999]">
+                <div x-show="open" class="fixed inset-0 bg-black bg-opacity-80 z-50">
                     <x-container>
                         <form action="{{route('search.show')}}" method="GET" class="py-4">
                             <div class="relative">
