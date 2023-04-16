@@ -93,7 +93,7 @@
             </form>
         @endif
     </div>
-    <div class="flex justify-between px-10 py-4 bg-slate-100">
+    <div class="flex justify-between px-2 py-4 bg-slate-100 text-sm md:text-base">
         <button wire:click="loginPage" class="text-[#47b5ff]">Есть акаунт?</button>
         <button wire:click="registerPage" class="text-[#47b5ff]">Регистрация?</button>
         <button wire:click="reminderPage" class="text-[#47b5ff]">Забыли пароль?</button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -13,8 +14,8 @@ class CategoryController extends Controller
      */
     public function __invoke(Category $category):View
     {
-        $category->load('articles');
+        $articles = Article::withFilters($category->id)->paginate(config('app.per_page'))->withQueryString();
 
-        return view('categories.show', compact('category'));
+        return view('categories.show', compact('category', 'articles'));
     }
 }

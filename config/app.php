@@ -154,6 +154,8 @@ return [
     |
     */
 
+    'per_page' => 20,
+
     'providers' => [
 
         /*

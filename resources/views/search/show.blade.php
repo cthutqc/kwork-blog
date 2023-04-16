@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-container>
-        <x-articles :category="$category">
+        <x-articles :search="request()->q">
             @each('articles.item', $articles, 'article')
             {{$articles->links('pagination::tailwind')}}
         </x-articles>

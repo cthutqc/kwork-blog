@@ -6,7 +6,7 @@
                 @for($i = 1; $i <= 5; $i++)
                     <span @class([
                         "text-[20px] text-slate-300",
-                        "text-[#FF9800]" => $i <= $article->avgRating()
+                        "!text-[#FF9800]" => $i <= $article->avgRating()
                     ])>&#9733;</span>
                 @endfor
                 <p class="flex space-x-1 items-center text-[12px] pl-4"><x-icons.comment class="w-3 h-3" /><span>{{count($article->comments)}}</span></p>

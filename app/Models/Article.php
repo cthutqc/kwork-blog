@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -69,5 +70,19 @@ class Article extends Model
     public function getShortenTextAttribute():string
     {
         return \Str::limit($this->attributes['text'], 100, '...');
+    }
+
+    public function scopeWithFilters(Builder $builder, $categoryId = null, $search = null)
+    {
+        $builder->when($categoryId, function ($q) use ($categoryId){
+            $q->where('category_id', $categoryId);
+        })
+            ->when($search, function ($q) use ($search){
+            $q->where(function ($q) use ($search){
+                $q->where('name', 'LIKE', '%'. $search.'%')
+                    ->orWhere('slug', 'LIKE', '%' . $search . '%')
+                        ->orWhere('text', 'LIKE', '%' . $search . '%');
+            });
+        });
     }
 }

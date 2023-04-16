@@ -6,7 +6,9 @@
                     <img src="{{asset('images/logo-b.png')}}" />
                 </a>
                 <div x-data="{ open: false }" class="relative border-l border-l-slate-50 border-opacity-50 pl-4">
-                    <button @click="open = !open" class="py-4">Категории</button>
+                    <button @click="open = !open" class="py-4">
+                        <span class="block">Категории</span>
+                    </button>
                     <div x-show="open" @click.away="open = false" class="lg:w-max text-black p-4 bg-white shadow fixed inset-0 lg:h-fit lg:absolute lg:top-full">
                         <ul class="block text-center lg:text-left">
                             @foreach($categories as $category)
@@ -23,15 +25,21 @@
                         </button>
                     </div>
                 </div>
-                <div class="pl-4 w-[376px] hidden lg:block">
-                    <input type="text" placeholder="search" class="w-full rounded-sm px-4 py-2">
+                <div class="pl-4 lg:w-[376px] hidden md:block">
+                    <form action="{{route('search.show')}}" method="GET">
+                        <input type="text" name="q" placeholder="Поиск..." class="w-full text-black rounded-sm px-4 py-2">
+                    </form>
                 </div>
             </div>
             <div>
                 @auth
-                    <a href="#">{{auth()->user()->name}}</a>
+                    <a href="#" class="hidden md:block">
+                        {{auth()->user()->name}}
+                    </a>
                 @else
-                    <a href="{{route('pages.login')}}">Войти</a>
+                    <a href="{{route('pages.login')}}" class="hidden md:block">
+                        Войти
+                    </a>
                 @endauth
             </div>
         </div>

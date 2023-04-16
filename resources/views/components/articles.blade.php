@@ -1,11 +1,14 @@
 @props([
-    'category' => $category ?? null
+    'category' => $category ?? null,
+    'search' => $search ?? null,
 ])
 <x-row>
-    @if($category)
+    @if($category || $search)
         <div class="mt-22 mb-8">
-            <x-h1>{{$category->h1 ?? $category->name}}</x-h1>
+            <x-h1>{{$category->h1 ?? $category->name ?? 'Ви искали: ' . $search}}</x-h1>
+            @if($category)
             {{ Breadcrumbs::render('category', $category) }}
+            @endif
         </div>
     @endif
     <div class="rounded-md grid md:grid-cols-4 overflow-hidden">

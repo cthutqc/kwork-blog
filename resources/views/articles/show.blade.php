@@ -10,7 +10,7 @@
                 <div
                     x-data="{}">
                     <div class="flex items-center space-x-10">
-                        <livewire:rating :article="$article"/>
+                        <livewire:rating :article="$article" />
                         <button
                             class="block text-white"
                             @click.prevent="window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })"
@@ -27,6 +27,7 @@
             <div class="space-y-4 md:col-span-3">
                 <x-article-row title="Текст">
                     {!! $article->text !!}
+                    <livewire:rate-it :article="$article"/>
                 </x-article-row>
                 @if(count($article->tags))
                 <x-article-row title="Теги">

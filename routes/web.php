@@ -16,6 +16,9 @@ Route::get('articles/{article:slug}', \App\Http\Controllers\ArticleController::c
 Route::get('categories/{category:slug}', \App\Http\Controllers\CategoryController::class)
     ->name('categories.show');
 
+Route::get('search/{q?}', \App\Http\Controllers\SearchController::class)
+    ->name('search.show');
+
 Route::middleware('guest')->group(function () {
     Route::get('login', \App\Http\Controllers\LoginController::class)
         ->name('pages.login');
