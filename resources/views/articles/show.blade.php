@@ -23,8 +23,8 @@
         </x-container>
     </div>
     <x-container class="-mt-12 z-20">
-        <div class="grid grid-cols-4 gap-4 rounded-md bg-slate-100 p-4">
-            <div class="space-y-4 col-span-3">
+        <div class="grid md:grid-cols-4 gap-4 rounded-md bg-slate-100 p-4">
+            <div class="space-y-4 md:col-span-3">
                 <x-article-row title="Текст">
                     {!! $article->text !!}
                 </x-article-row>
@@ -39,7 +39,7 @@
                 @endif
                 <livewire:comments :article="$article"/>
             </div>
-            <div>
+            <div class="hidden md:block">
                 sidebar
             </div>
         </div>

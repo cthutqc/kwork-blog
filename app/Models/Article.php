@@ -56,6 +56,16 @@ class Article extends Model
         return round($this->ratings->avg('score'));
     }
 
+    public function likes():HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function totalLikes()
+    {
+        return $this->likes->count();
+    }
+
     public function getShortenTextAttribute():string
     {
         return \Str::limit($this->attributes['text'], 100, '...');

@@ -1,4 +1,4 @@
-<div class="bg-white w-full block shadow">
+<div class="bg-white w-full hidden md:block shadow">
     <div class="bg-[#20344c] block p-4 text-white">Все категории</div>
     <ul>
         @foreach($categories as $category)

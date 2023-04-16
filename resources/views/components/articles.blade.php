@@ -8,9 +8,9 @@
             {{ Breadcrumbs::render('category', $category) }}
         </div>
     @endif
-    <div class="rounded-md grid grid-cols-4 overflow-hidden">
+    <div class="rounded-md grid md:grid-cols-4 overflow-hidden">
         <x-sidebar />
-        <div class="space-y-4 bg-slate-100 py-4 px-8 w-full block col-span-3">
+        <div class="space-y-4 bg-slate-100 py-4 px-8 w-full block md:col-span-3">
             {{$slot}}
         </div>
     </div>
