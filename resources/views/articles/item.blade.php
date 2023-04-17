@@ -1,5 +1,9 @@
-<div class="group w-full p-1 rounded-sm shadow bg-white grid md:grid-cols-4">
-    <a href="{{route('articles.show', $article)}}" class="h-[158px] w-full bg-cover bg-no-repeat bg-center" style="background-image: url({{asset('images/placeholder.jpeg')}})"></a>
+<div class="group w-full p-1 rounded-sm shadow bg-white overflow-hidden grid md:grid-cols-4">
+    <div class="overflow-hidden h-[158px] w-full relative">
+        <a href="{{route('articles.show', $article)}}"
+           class="absolute inset-0 bg-cover bg-no-repeat bg-center transition-all duration-500 ease-in-out transform group-hover:scale-110"
+           style="background-image: url({{asset('images/placeholder.jpeg')}})"></a>
+    </div>
     <div class="space-y-2 lg:space-y-4 md:col-span-3 p-4 relative">
         <div class="md:absolute md:top-0 md:right-4">
             <div class="flex items-center">
@@ -16,7 +20,7 @@
         <p>{{$article->shortenText}}</p>
         <div class="block space-y-2 md:flex md:justify-start md:space-x-2 md:space-y-0">
             <a href="{{route('articles.show', $article)}}" class="w-full block md:w-max text-center p-1 lg:p-2 text-sm font-semibold rounded-sm border border-slate-300 text-black">Полная новость</a>
-            <button class="w-full block md:w-max text-center p-1 lg:p-2 text-sm font-semibold bg-[#f44336] rounded-sm border border-[#f44336] text-white hover:text-black hover:bg-[#FFC107] hover:border-[#FFC107]">Написать сообщение</button>
+            <button class="w-full block md:w-max text-center p-1 lg:p-2 text-sm font-semibold bg-[#f44336] rounded-sm border border-[#f44336] text-white group-hover:text-black group-hover:bg-[#FFC107] group-hover:border-[#FFC107]">Написать сообщение</button>
         </div>
     </div>
 </div>

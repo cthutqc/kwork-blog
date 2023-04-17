@@ -1,4 +1,4 @@
-<div class="bg-white rounded-b-md w-full md:w-[460px] m-auto overflow-hidden shadow">
+<div class="bg-white rounded-b-md w-full md:w-[460px] m-auto overflow-hidden shadow relative">
     <div class="h-[10px] bg-gradient-to-r from-[#7fccbb] to-[#4c7af1]"></div>
     <div class="p-10">
         @if (session()->has('success'))
@@ -97,6 +97,9 @@
         <button wire:click="loginPage" class="text-[#47b5ff]">Есть акаунт?</button>
         <button wire:click="registerPage" class="text-[#47b5ff]">Регистрация?</button>
         <button wire:click="reminderPage" class="text-[#47b5ff]">Забыли пароль?</button>
+    </div>
+    <div wire:loading wire:target="login,register,remind" class="absolute inset-0 bg-white bg-opacity-60">
+        <x-loading />
     </div>
     <script>
         function phoneMask(input) {

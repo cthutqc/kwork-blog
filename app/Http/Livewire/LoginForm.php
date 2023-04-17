@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Notifications\AdminAccountRegisteredNotification;
+use App\Notifications\UserAccountRegisteredNotification;
 use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +54,15 @@ class LoginForm extends Component implements Forms\Contracts\HasForms
         $user->assignRole('user');
 
         if(Auth::attempt($this->only(['email', 'password']))) {
+
+            Auth::user()->notify(new UserAccountRegisteredNotification());
+
+            User::whereHas('roles', function ($q){
+                $q->where('name', 'admin');
+            })->each(function ($user) {
+                $user->notify(new AdminAccountRegisteredNotification());
+            });
+
             session()->flash('success', 'Поздравляем! Вы успешно зарегистрировались на сайте.');
         } else {
             session()->flash('error', 'Поздравляем! Вы успешно зарегистрировались на сайте.');
