@@ -3,7 +3,11 @@
 ])
 <div {{$attributes}}>
     <div class="w-full block space-y-2">
-        <p class="font-bold">{{$comment->user->name}}</p>
+        <p class="font-bold flex w-max items-center space-x-2">
+            <img src="{{$comment->user->getFirstMediaUrl() ? $comment->user->getFirstMediaUrl() : asset('images/profile-placeholder.png')}}"
+                 class="m-auto h-[20px] w-[20px] rounded-full" />
+            <span>{{$comment->user->name}}</span>
+        </p>
         <p class="text-[10px]">{{$comment->formattedCreatedAt}}</p>
         <p>{{$comment->text}}</p>
     </div>

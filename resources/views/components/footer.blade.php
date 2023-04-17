@@ -12,14 +12,7 @@
                 </button>
                 <div x-show="open" class="fixed inset-0 bg-black bg-opacity-80 z-50">
                     <x-container>
-                        <form action="{{route('search.show')}}" method="GET" class="py-4">
-                            <div class="relative">
-                                <input type="text" @click.away="open = false" name="q" placeholder="Поиск..." class="text-black w-full block rounded-sm p-4" />
-                                <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2">
-                                    <x-icons.search class="w-6 h-6 fill-black"/>
-                                </button>
-                            </div>
-                        </form>
+                        <x-search />
                     </x-container>
                 </div>
             </div>

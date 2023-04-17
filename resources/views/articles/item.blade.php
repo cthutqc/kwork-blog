@@ -13,7 +13,8 @@
                         "!text-[#FF9800]" => $i <= $article->avgRating()
                     ])>&#9733;</span>
                 @endfor
-                <p class="flex space-x-1 items-center text-[12px] pl-4"><x-icons.comment class="w-3 h-3" /><span>{{count($article->comments)}}</span></p>
+                <p class="flex space-x-1 items-center text-[12px] pl-4"><x-icons.comment class="w-3 h-3" /><span>{{$article->totalComments()}}</span></p>
+                <p class="flex space-x-1 items-center text-[12px] pl-4"><x-icons.hearth /><span>{{$article->totalLikes()}}</span></p>
             </div>
         </div>
         <a href="{{route('articles.show', $article)}}" class="font-semibold text-lg">{{$article->name}}</a>

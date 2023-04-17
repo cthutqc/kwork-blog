@@ -1,4 +1,4 @@
-<form id="comment" wire:submit.prevent="addComment">
+<form id="comment" wire:submit.prevent="addComment" class="relative">
     <div class="my-4">
         <textarea wire:model="text"
                  @class([
@@ -18,4 +18,7 @@
     <x-form-button>
         Отправить
     </x-form-button>
+    <div wire:loading wire:target="addComment" class="absolute inset-0 bg-white bg-opacity-60">
+        <x-loading />
+    </div>
 </form>

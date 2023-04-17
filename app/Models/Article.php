@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Article extends Model
+class Article extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, HasSlug;
+    use HasFactory, SoftDeletes, HasSlug, InteractsWithMedia;
 
     protected $guarded = ['id'];
 
@@ -40,6 +42,11 @@ class Article extends Model
     public function comments():HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function totalComments()
+    {
+        return $this->comments->count();
     }
 
     public function category():BelongsTo

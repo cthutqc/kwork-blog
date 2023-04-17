@@ -26,9 +26,7 @@
                     </div>
                 </div>
                 <div class="pl-4 lg:w-[376px] hidden md:block">
-                    <form action="{{route('search.show')}}" method="GET">
-                        <input type="text" name="q" placeholder="Поиск..." class="w-full text-black rounded-sm px-4 py-2">
-                    </form>
+                    <x-search />
                 </div>
             </div>
             <div>
