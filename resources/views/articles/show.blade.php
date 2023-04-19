@@ -3,7 +3,7 @@
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
         <x-container class="absolute left-0 m-auto top-1/2 -translate-y-1/2 md:grid md:grid-cols-2">
             <div class="space-y-4">
-                <img src="{{asset('images/placeholder.jpeg')}}" class="h-[158px] w-auto alt="{{$article->h1 ?? $article->name}}" title="{{$article->h1 ?? $article->name}}"/>
+                <img src="{{$article->getFirstMediaUrl() ? $article->getFirstMediaUrl() : asset('images/placeholder.jpeg')}}" class="h-[158px] w-auto alt="{{$article->h1 ?? $article->name}}" title="{{$article->h1 ?? $article->name}}"/>
                 <x-h1>
                     {{$article->h1 ?? $article->name}}
                 </x-h1>

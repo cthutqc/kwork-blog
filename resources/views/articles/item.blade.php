@@ -2,7 +2,7 @@
     <div class="overflow-hidden h-[158px] w-full relative">
         <a href="{{route('articles.show', $article)}}"
            class="absolute inset-0 bg-cover bg-no-repeat bg-center transition-all duration-500 ease-in-out transform group-hover:scale-110"
-           style="background-image: url({{asset('images/placeholder.jpeg')}})"></a>
+           style="background-image: url({{$article->getFirstMediaUrl() ? $article->getFirstMediaUrl() : asset('images/placeholder.jpeg')}})"></a>
     </div>
     <div class="space-y-2 lg:space-y-4 md:col-span-3 p-4 relative">
         <div class="md:absolute md:top-0 md:right-4">

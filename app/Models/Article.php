@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -77,6 +78,11 @@ class Article extends Model implements HasMedia
     public function getShortenTextAttribute():string
     {
         return \Str::limit($this->attributes['text'], 100, '...');
+    }
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->toFormattedDateString();
     }
 
     public function scopeWithFilters(Builder $builder, $categoryId = null, $search = null)

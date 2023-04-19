@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="border-x border-b border-slate-200 bg-white p-10 rounded-b-md relative">
-        <a href="" class="rounded-3xl text-white bg-[#56caff] font-semibold py-2 px-4 absolute inset-x-0 m-auto w-max bottom-[86%]">Посмотреть профайл</a>
+        <a href="{{route('profile.show', $user)}}" class="rounded-3xl text-white bg-[#56caff] font-semibold py-2 px-4 absolute inset-x-0 m-auto w-max bottom-[86%]">Посмотреть профайл</a>
         <button class="text-center m-auto block">Написать автору</button>
     </div>
 </div>

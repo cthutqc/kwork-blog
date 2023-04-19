@@ -19,6 +19,9 @@ Route::get('categories/{category:slug}', \App\Http\Controllers\CategoryControlle
 Route::get('search/{q?}', \App\Http\Controllers\SearchController::class)
     ->name('search.show');
 
+Route::get('profile/{user}', \App\Http\Controllers\ProfileController::class)
+    ->name('profile.show');
+
 Route::middleware('guest')->group(function () {
     Route::get('login', \App\Http\Controllers\LoginController::class)
         ->name('pages.login');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\MailResetPasswordToken;
+use Carbon\Carbon;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -50,6 +51,11 @@ class User extends Authenticatable implements FilamentUser, HasMedia
         'email_verified_at' => 'datetime',
     ];
 
+    public function articles():HasMany
+    {
+        return $this->hasMany(Article::class);
+    }
+
     public function comments():HasMany
     {
         return $this->hasMany(Comment::class);
@@ -68,5 +74,10 @@ class User extends Authenticatable implements FilamentUser, HasMedia
     public function canAccessFilament(): bool
     {
         return $this->hasRole('admin');
+    }
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->toFormattedDateString();
     }
 }
