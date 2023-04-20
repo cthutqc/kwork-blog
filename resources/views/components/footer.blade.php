@@ -26,13 +26,14 @@
                 @endauth
                 </span>
             </a>
-            <button class="space-y-2">
+            <a href="{{route('pages.support')}}" class="space-y-2">
                 <img src="{{asset('images/how1.png')}}" class="w-6 h-6 m-auto">
                 <span>Поддержка</span>
-            </button>
+            </a>
         </div>
-        <div class="hidden md:flex">
+        <div class="hidden md:flex space-x-4">
             <a href="{{route('pages.show', 'about')}}">О блоге</a>
+            <a href="{{route('pages.support')}}">Поддержка</a>
         </div>
     </x-container>
 </div>

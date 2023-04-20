@@ -33,5 +33,8 @@ Route::middleware('guest')->group(function () {
     })->name('password.reset');
 });
 
+Route::get('support', \App\Http\Controllers\SupportController::class)
+    ->name('pages.support');
+
 Route::get('{page:slug}', \App\Http\Controllers\PageController::class)
     ->name('pages.show');

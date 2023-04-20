@@ -11,9 +11,9 @@ class MetaAction
 {
     public function handle($model)
     {
-        $title = $model->meta_title ?? $model->name;
+        $title = $model->meta_title ?? $model->name ?? env('APP_NAME');
 
-        $description = $model->meta_description ?? $model->name;
+        $description = $model->meta_description ?? $model->name ?? env('APP_NAME');
 
         Meta::setTitle(env('APP_NAME'))
             ->prependTitle($title)

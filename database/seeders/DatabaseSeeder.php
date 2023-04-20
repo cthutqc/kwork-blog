@@ -28,8 +28,14 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Page::create([
-            'name' => 'About',
-            'text' => fake()->text(1000),
+            'name' => 'О сайте',
+            'slug' => 'about',
+            'text' => fake()->text(5000),
+        ]);
+
+        Page::create([
+            'name' => 'Поддержка',
+            'slug' => 'support'
         ]);
 
         Category::factory(5)->create()->each(function ($category){
