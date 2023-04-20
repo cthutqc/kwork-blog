@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $action->handle($category);
 
-        $articles = Article::withFilters($category->id)->paginate(config('app.per_page'))->withQueryString();
+        $articles = Article::withFilters($category->id)->orderByDesc('created_at')->paginate(config('app.per_page'))->withQueryString();
 
         return view('categories.show', compact('category', 'articles'));
     }

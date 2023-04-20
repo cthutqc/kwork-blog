@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $articles = \App\Models\Article::take(6)->get();
+    $articles = \App\Models\Article::take(6)->orderByDesc('created_at')->get();
     return view('pages.home', compact('articles'));
 })->name('pages.home');
 
@@ -22,15 +22,20 @@ Route::get('search/{q?}', \App\Http\Controllers\SearchController::class)
 Route::get('profile/{user}', \App\Http\Controllers\ProfileController::class)
     ->name('profile.show');
 
-Route::middleware('guest')->group(function () {
-    Route::get('login', \App\Http\Controllers\LoginController::class)
-        ->name('pages.login');
+Route::get('login', \App\Http\Controllers\LoginController::class)
+    ->name('pages.login');
 
+Route::middleware('guest')->group(function () {
     Route::get('/reset-password', function (string $token) {})->name('password.reset');
 
     Route::get('/reset-password/{token}', function ($token) {
         return view('pages.reset-password', ['token' => $token]);
     })->name('password.reset');
+});
+
+Route::middleware('auth')->group(function (){
+    Route::get('user/articles/add', \App\Http\Controllers\StoreArticleController::class)
+        ->name('articles.store');
 });
 
 Route::get('support', \App\Http\Controllers\SupportController::class)

@@ -22,11 +22,13 @@
             </div>
 
             <div class="my-4">
-        <textarea wire:model="message"
-                 @class([
-                    'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                    'border !border-red-500' => $errors->first('message'),
-                ])></textarea>
+                <textarea wire:model="message"
+                         @class([
+                            'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                            'border !border-red-500' => $errors->first('message'),
+                        ])>
+
+                </textarea>
             </div>
             @if (session()->has('success'))
                 <div class="text-center leading-normal text-green-500">
