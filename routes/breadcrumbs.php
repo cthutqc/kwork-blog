@@ -7,6 +7,11 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Главная', route('pages.home'));
 });
 
+Breadcrumbs::for('page', function (BreadcrumbTrail $trail, $page) {
+    $trail->parent('home');
+    $trail->push($page->name, route('pages.show', $page));
+});
+
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('home');
     $trail->push($category->name, route('categories.show', $category));

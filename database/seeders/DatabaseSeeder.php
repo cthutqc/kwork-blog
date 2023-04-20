@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +26,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Page::create([
+            'name' => 'About',
+            'text' => fake()->text(1000),
+        ]);
 
         Category::factory(5)->create()->each(function ($category){
             $category->articles()->saveMany(Article::factory(30)->create()->each(function ($article){

@@ -32,3 +32,6 @@ Route::middleware('guest')->group(function () {
         return view('pages.reset-password', ['token' => $token]);
     })->name('password.reset');
 });
+
+Route::get('{page:slug}', \App\Http\Controllers\PageController::class)
+    ->name('pages.show');

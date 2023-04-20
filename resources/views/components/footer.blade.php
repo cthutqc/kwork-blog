@@ -32,7 +32,7 @@
             </button>
         </div>
         <div class="hidden md:flex">
-            footer
+            <a href="{{route('pages.show', 'about')}}">О блоге</a>
         </div>
     </x-container>
 </div>
