@@ -10,87 +10,89 @@
                 {{ session('error') }}
             </div>
         @endif
-        @if($isLogin)
-            <form wire:submit.prevent="login">
-                <div class="my-4">
-                    <input type="email"
-                           @class([
-                                 'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                                 'border !border-red-500' => $errors->first('email'),
-                             ])
-                           wire:model="email"
-                           placeholder="Email">
-                </div>
-                <div class="my-4">
-                    <input type="password"
-                           @class([
-                                 'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                                 'border !border-red-500' => $errors->first('password'),
-                             ])
-                           wire:model="password"
-                           placeholder="Пароль">
-                </div>
-                <x-form-button>
-                    Войти
-                </x-form-button>
-            </form>
-        @elseif($isRegister)
-            <form wire:submit.prevent="register">
-                <div class="my-4">
-                    <input type="text"
-                           @class([
-                                 'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                                 'border !border-red-500' => $errors->first('name'),
-                             ])
-                           wire:model="name"
-                           placeholder="Имя">
-                </div>
-                <div class="my-4">
-                    <input type="email"
-                           @class([
-                              'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                              'border !border-red-500' => $errors->first('email'),
-                          ])
-                           wire:model="email"
-                           placeholder="Email">
-                </div>
-                <div class="my-4">
-                    <input type="text"
-                           @class([
-                                 'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                             ])
-                           x-mask:dynamic="phoneMask"
-                           wire:model="phone"
-                           placeholder="Телефон">
-                </div>
-                <div class="my-4">
-                    <input type="password"
-                           @class([
-                                 'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                                 'border !border-red-500' => $errors->first('password'),
-                             ])
-                           wire:model="password"
-                           placeholder="Пароль">
-                </div>
-                <x-form-button>
-                    Зарегистрироваться
-                </x-form-button>
-            </form>
-        @else
-            <form wire:submit.prevent="remind">
-                <div class="my-4">
-                    <input type="email"
-                           @class([
-                                 'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                                 'border !border-red-500' => $errors->first('email'),
-                             ])
-                           wire:model="email"
-                           placeholder="Email">
-                </div>
-                <x-form-button>
-                    Напомнить пароль
-                </x-form-button>
-            </form>
+        @if (!session()->has('success'))
+            @if($isLogin)
+                <form wire:submit.prevent="login">
+                    <div class="my-4">
+                        <input type="email"
+                               @class([
+                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                     'border !border-red-500' => $errors->first('email'),
+                                 ])
+                               wire:model="email"
+                               placeholder="Email">
+                    </div>
+                    <div class="my-4">
+                        <input type="password"
+                               @class([
+                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                     'border !border-red-500' => $errors->first('password'),
+                                 ])
+                               wire:model="password"
+                               placeholder="Пароль">
+                    </div>
+                    <x-form-button>
+                        Войти
+                    </x-form-button>
+                </form>
+            @elseif($isRegister)
+                <form wire:submit.prevent="register">
+                    <div class="my-4">
+                        <input type="text"
+                               @class([
+                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                     'border !border-red-500' => $errors->first('name'),
+                                 ])
+                               wire:model="name"
+                               placeholder="Имя">
+                    </div>
+                    <div class="my-4">
+                        <input type="email"
+                               @class([
+                                  'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                  'border !border-red-500' => $errors->first('email'),
+                              ])
+                               wire:model="email"
+                               placeholder="Email">
+                    </div>
+                    <div class="my-4">
+                        <input type="text"
+                               @class([
+                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                 ])
+                               x-mask:dynamic="phoneMask"
+                               wire:model="phone"
+                               placeholder="Телефон">
+                    </div>
+                    <div class="my-4">
+                        <input type="password"
+                               @class([
+                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                     'border !border-red-500' => $errors->first('password'),
+                                 ])
+                               wire:model="password"
+                               placeholder="Пароль">
+                    </div>
+                    <x-form-button>
+                        Зарегистрироваться
+                    </x-form-button>
+                </form>
+            @else
+                <form wire:submit.prevent="remind">
+                    <div class="my-4">
+                        <input type="email"
+                               @class([
+                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
+                                     'border !border-red-500' => $errors->first('email'),
+                                 ])
+                               wire:model="email"
+                               placeholder="Email">
+                    </div>
+                    <x-form-button>
+                        Напомнить пароль
+                    </x-form-button>
+                </form>
+            @endif
         @endif
     </div>
     <div class="flex justify-between px-2 py-4 bg-slate-100 text-sm md:text-base">

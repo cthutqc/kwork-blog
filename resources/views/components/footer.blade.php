@@ -16,7 +16,7 @@
                     </x-container>
                 </div>
             </div>
-            <a href="{{route('pages.login')}}" class="space-y-2">
+            <a href="{{Auth::check() ? route('users.dashboard') : route('pages.login')}}" class="space-y-2">
                 <img src="{{asset('images/shop.png')}}" class="w-6 h-6 m-auto">
                 <span>
                 @auth

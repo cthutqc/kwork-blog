@@ -2,7 +2,7 @@
     <div class="p-4 border-b border-b-slate-200 font-bold uppercase">
         {{$title}}
     </div>
-    <div class="p-4">
+    <div class="p-4 description">
         {{$slot}}
     </div>
 </div>

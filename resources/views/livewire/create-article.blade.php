@@ -1,6 +1,7 @@
 <div class="bg-white rounded-b-md w-full lg:w-2/3 m-auto overflow-hidden shadow relative">
     <div class="h-[10px] bg-gradient-to-r from-[#7fccbb] to-[#4c7af1]"></div>
     <div class="p-10">
+        @if (!session()->has('success'))
         <form wire:submit.prevent="submit">
 
             <div class="my-4">
@@ -13,16 +14,24 @@
                        placeholder="Заголовок">
             </div>
 
-            <div class="my-4">
-                <textarea wire:model="text"
-                         @class([
-                            'border border-slate-100 h-[200px] rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                            'border !border-red-500' => $errors->first('meta_description'),
-                        ])
-                        placeholder="Текст">
-
-                </textarea>
+            <div class="relative my-4">
+                <label for="preview" class="cursor-pointer">
+                    <input type="file" id="preview" wire:model="image" class="hidden">
+                    @if($image)
+                        <img src="{{$image->temporaryUrl()}}"
+                              class="m-auto h-[200px] w-[200px] shadow" />
+                    @else
+                        <div class="m-auto text-center p-10 w-full shadow bg-slate-100">
+                            Загрузить превью статьи
+                        </div>
+                    @endif
+                </label>
+                <div wire:loading wire:target="image" class="absolute inset-0 bg-white bg-opacity-60">
+                    <x-loading />
+                </div>
             </div>
+
+            <livewire:trix :value="$text" />
 
             <div class="my-4">
 
@@ -70,6 +79,12 @@
                 </textarea>
             </div>
 
+            <x-form-button>
+                Отправить
+            </x-form-button>
+
+            @endif
+
             @if (session()->has('success'))
                 <div class="text-center leading-normal text-green-500">
                     {{ session('success') }}
@@ -80,9 +95,6 @@
                 </div>
             @endif
 
-            <x-form-button>
-                Отправить
-            </x-form-button>
             <div wire:loading wire:target="submit" class="absolute inset-0 bg-white bg-opacity-60">
                 <x-loading />
             </div>

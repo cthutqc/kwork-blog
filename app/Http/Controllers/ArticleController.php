@@ -13,6 +13,10 @@ class ArticleController extends Controller
      */
     public function __invoke(Article $article, MetaAction $action):View
     {
+
+        if(!$article->active)
+            abort(404);
+
         $action->handle($article);
 
         $article->load('tags', 'comments.user');

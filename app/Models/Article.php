@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\ArticleOrderScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -77,7 +78,7 @@ class Article extends Model implements HasMedia
 
     public function getShortenTextAttribute():string
     {
-        return \Str::limit($this->attributes['text'], 100, '...');
+        return \Str::limit(strip_tags($this->attributes['text']), 100, '...');
     }
 
     public function getFormattedCreatedAtAttribute()

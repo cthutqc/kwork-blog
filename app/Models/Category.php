@@ -28,6 +28,6 @@ class Category extends Model implements HasMedia
 
     public function articles():HasMany
     {
-        return $this->hasMany(Article::class)->orderByDesc('created_at');
+        return $this->hasMany(Article::class);
     }
 }

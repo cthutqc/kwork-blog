@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    .description {
+        @apply leading-normal;
+    }
+    .description p, .description span {
+        @apply mb-4 !text-base;
+    }
+    .description span{
+        @apply !text-base;
+    }
+    .description h1, .description h2, .description h3, .description h4, .description h5 {
+        @apply my-2.5 font-semibold text-xl;
+    }
+    .description a {
+        @apply underline hover:no-underline;
+    }
+    .description ul{
+        @apply pl-6 list-disc;
+    }
+}

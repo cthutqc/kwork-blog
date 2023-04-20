@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Page;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,6 +23,17 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Page::create([
+            'name' => 'О сайте',
+            'slug' => 'about',
+            'text' => fake()->text(5000),
+        ]);
+
+        Page::create([
+            'name' => 'Поддержка',
+            'slug' => 'support'
+        ]);
     }
 
     /**

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65e3dc5f44ca2c31a1ba14e78b2266dd",
+    "content-hash": "5bdb0977b82299cc85be13b3906bce69",
     "packages": [
         {
             "name": "abordage/laravel-last-modified",
@@ -1537,6 +1537,43 @@
                 "source": "https://github.com/filamentphp/filament"
             },
             "time": "2023-04-11T10:42:19+00:00"
+        },
+        {
+            "name": "filament/spatie-laravel-media-library-plugin",
+            "version": "v2.17.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filamentphp/spatie-laravel-media-library-plugin.git",
+                "reference": "0e791c03285e4207450da5c1085ac15852a733cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filamentphp/spatie-laravel-media-library-plugin/zipball/0e791c03285e4207450da5c1085ac15852a733cb",
+                "reference": "0e791c03285e4207450da5c1085ac15852a733cb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.6|^9.0|^10.0",
+                "php": "^8.0",
+                "spatie/laravel-medialibrary": "^9.0|^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Filament\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Filament support for `spatie/laravel-medialibrary`.",
+            "homepage": "https://github.com/filamentphp/filament",
+            "support": {
+                "issues": "https://github.com/filamentphp/filament/issues",
+                "source": "https://github.com/filamentphp/filament"
+            },
+            "time": "2023-04-18T16:32:40+00:00"
         },
         {
             "name": "filament/support",

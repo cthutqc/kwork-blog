@@ -11,6 +11,6 @@ class StoreArticleController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('accounts.article');
+        return view('users.article');
     }
 }

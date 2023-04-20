@@ -5,22 +5,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $articles = \App\Models\Article::take(6)->orderByDesc('created_at')->get();
     return view('pages.home', compact('articles'));
-})->name('pages.home');
+})->name('pages.home')
+    ->middleware('enable.articles.order');
 
 Route::get('articles', \App\Http\Controllers\ArticlesController::class)
     ->name('articles.index');
 
 Route::get('articles/{article:slug}', \App\Http\Controllers\ArticleController::class)
-    ->name('articles.show');
+    ->name('articles.show')
+    ->middleware('enable.articles.order');
 
 Route::get('categories/{category:slug}', \App\Http\Controllers\CategoryController::class)
-    ->name('categories.show');
+    ->name('categories.show')
+    ->middleware('enable.articles.order');
 
 Route::get('search/{q?}', \App\Http\Controllers\SearchController::class)
-    ->name('search.show');
+    ->name('search.show')
+    ->middleware('enable.articles.order');
 
 Route::get('profile/{user}', \App\Http\Controllers\ProfileController::class)
-    ->name('profile.show');
+    ->name('profile.show')
+    ->middleware('enable.articles.order');
 
 Route::get('login', \App\Http\Controllers\LoginController::class)
     ->name('pages.login');
@@ -34,8 +39,17 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function (){
-    Route::get('user/articles/add', \App\Http\Controllers\StoreArticleController::class)
-        ->name('articles.store');
+
+    Route::prefix('user')->group(function (){
+
+        Route::get('/', \App\Http\Controllers\UserController::class)
+            ->name('users.dashboard');
+
+        Route::get('articles/add', \App\Http\Controllers\StoreArticleController::class)
+            ->name('users.add.article');
+
+    });
+
 });
 
 Route::get('support', \App\Http\Controllers\SupportController::class)

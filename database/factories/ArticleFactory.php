@@ -21,6 +21,7 @@ class ArticleFactory extends Factory
             'name' => fake()->unique()->words(4, true),
             'text' => fake()->realText(1000),
             'user_id' => User::inRandomOrder()->first(),
+            'active' => true,
         ];
     }
 }

@@ -9,6 +9,7 @@
                     <button @click="open = !open" class="py-4">
                         <span class="block">Категории</span>
                     </button>
+                    @if(count($categories))
                     <div x-show="open" @click.away="open = false" class="lg:w-max text-black p-4 bg-white shadow fixed inset-0 lg:h-fit lg:absolute lg:top-full block">
                         <ul class="block text-center lg:text-left">
                             @foreach($categories as $category)
@@ -24,6 +25,7 @@
                             <x-icons.close />
                         </button>
                     </div>
+                    @endif
                 </div>
                 <div class="pl-4 lg:w-[376px] hidden md:block">
                     <x-search />
@@ -31,7 +33,7 @@
             </div>
             <div>
                 @auth
-                    <a href="#" class="hidden md:block">
+                    <a href="{{route('users.dashboard')}}" class="hidden md:block">
                         {{auth()->user()->name}}
                     </a>
                 @else
