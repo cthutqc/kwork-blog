@@ -28,7 +28,7 @@
         </x-container>
     </div>
     <x-container class="-mt-12 z-20">
-        <div class="grid md:grid-cols-4 gap-4 rounded-md bg-slate-100 p-4 pb-20 md:pb-4">
+        <div class="grid md:grid-cols-4 gap-4 rounded-md bg-slate-100 p-4 pb-20 lg:pb-40">
             <div class="space-y-4 md:col-span-3">
                 <x-article-row title="Текст">
                     {!! $article->text !!}

@@ -1,4 +1,9 @@
-<div>
+<div class="w-full">
+    <div class="py-10 px-4 lg:p-0 bg-[#191919] w-full">
+        <x-container class="flex">
+            <x-banner />
+        </x-container>
+    </div>
     <div class="bg-[#191919] w-full py-2 md:py-10 text-white fixed bottom-0 inset-x-0 z-50 md:z-0 md:relative z-20">
         <x-container>
             <div class="flex justify-between items-center md:hidden">

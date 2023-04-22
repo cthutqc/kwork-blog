@@ -1,4 +1,4 @@
-<div class="bg-[#090b52] w-full block fixed inset-x-0 top-0 z-50 text-white z-20">
+<div class="bg-[#090b52] w-full block fixed inset-x-0 top-0 z-50 text-white z-50">
     <x-container>
         <div class="flex justify-between items-center w-full">
             <div class="flex justify-start items-center space-x-4 flex-wrap">
@@ -10,14 +10,11 @@
                         <span class="block">Категории</span>
                     </button>
                     @if(count($categories))
-                    <div x-show="open" @click.away="open = false" class="lg:w-max text-black p-4 bg-white shadow fixed inset-0 lg:h-fit lg:absolute lg:top-full block">
-                        <ul class="block text-center lg:text-left">
+                    <div x-show="open" @click.away="open = false" class="md:w-max text-black py-4 px-10 bg-white shadow fixed inset-0 md:h-fit md:absolute md:top-full block">
+                        <ul class="block text-left m-auto">
                             @foreach($categories as $category)
                                 <li>
-                                    <a href="{{route('categories.show', $category)}}" @class([
-                                    "block w-full p-4",
-                                    "font-bold" => request()->segment(2) == $category->slug,
-                                ])>{{$category->name}}</a>
+                                    <x-category-link :category="$category" />
                                 </li>
                             @endforeach
                         </ul>

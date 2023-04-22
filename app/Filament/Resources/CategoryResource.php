@@ -45,6 +45,7 @@ class CategoryResource extends Resource
                     Forms\Components\Textarea::make('meta_description')
                         ->label('Meta description')
                         ->maxLength(65535),
+                    Forms\Components\SpatieMediaLibraryFileUpload::make('image'),
                 ])
             ]);
     }
@@ -53,6 +54,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Название'),
                 Tables\Columns\TextColumn::make('updated_at')

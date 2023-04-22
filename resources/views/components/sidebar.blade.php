@@ -1,12 +1,9 @@
 <div class="bg-white w-full hidden md:block shadow">
-    <div class="bg-[#20344c] block p-4 text-white">Все категории</div>
-    <ul>
+    <div class="bg-[#20344c] block py-4 px-6 text-white">Все категории</div>
+    <ul class="py-4 px-6 m-0">
         @foreach($categories as $category)
             <li>
-                <a href="{{route('categories.show', $category)}}" @class([
-                    "block w-full p-4",
-                    "font-bold" => request()->segment(2) == $category->slug,
-                ])>{{$category->name}}</a>
+                <x-category-link :category="$category" />
             </li>
         @endforeach
     </ul>
