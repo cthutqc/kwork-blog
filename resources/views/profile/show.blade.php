@@ -9,9 +9,9 @@
                      class="m-auto h-[100px] w-[100px] rounded-full shadow" />
                 <p class="text-lg">{{$user->name}}</p>
                 <p class="text-sm">С нами с {{$user->formatted_created_at}}</p>
-                <button type="submit" class="block text-lg rounded-md w-full bg-[#51c0ff] focus:bg-[#007bff] focus:outline-none focus:ring focus:ring-[#51c0ff] text-white py-2 text-center">
+                <a href="{{auth()->user() ? route('users.chat', $user) : route('pages.login')}}" type="submit" class="block text-lg rounded-md w-full bg-[#51c0ff] focus:bg-[#007bff] focus:outline-none focus:ring focus:ring-[#51c0ff] text-white py-2 text-center">
                     Написать
-                </button>
+                </a>
             </div>
         </div>
         <div class="h-[420px] md:h-auto md:col-span-2 bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/promo.jpg')}})"></div>

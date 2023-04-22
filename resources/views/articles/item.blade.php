@@ -21,7 +21,7 @@
         <p>{{$article->shortenText}}</p>
         <div class="block space-y-2 md:flex md:justify-start md:space-x-2 md:space-y-0">
             <a href="{{route('articles.show', $article)}}" class="w-full block md:w-max text-center p-1 lg:p-2 text-sm font-semibold rounded-sm border border-slate-300 text-black">Полная новость</a>
-            <button class="w-full block md:w-max text-center p-1 lg:p-2 text-sm font-semibold bg-[#f44336] rounded-sm border border-[#f44336] text-white group-hover:text-black group-hover:bg-[#FFC107] group-hover:border-[#FFC107]">Написать сообщение</button>
+            <a href="{{auth()->user() ? route('users.chat', $article->user) : route('pages.login')}}" class="w-full block md:w-max text-center p-1 lg:p-2 text-sm font-semibold bg-[#f44336] rounded-sm border border-[#f44336] text-white group-hover:text-black group-hover:bg-[#FFC107] group-hover:border-[#FFC107]">Написать сообщение</a>
         </div>
     </div>
 </div>

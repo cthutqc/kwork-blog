@@ -40,13 +40,16 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function (){
 
-    Route::prefix('user')->group(function (){
+    Route::prefix('user')->as('users.')->group(function (){
 
         Route::get('/', \App\Http\Controllers\UserController::class)
-            ->name('users.dashboard');
+            ->name('dashboard');
 
         Route::get('articles/add', \App\Http\Controllers\StoreArticleController::class)
-            ->name('users.add.article');
+            ->name('add.article');
+
+        Route::get('chat/{user?}', \App\Http\Controllers\ChatController::class)
+            ->name('chat');
 
     });
 

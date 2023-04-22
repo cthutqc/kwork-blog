@@ -30,6 +30,7 @@ class User extends Authenticatable implements FilamentUser, HasMedia
         'email',
         'phone',
         'password',
+        'last_activity',
     ];
 
     /**
@@ -79,5 +80,20 @@ class User extends Authenticatable implements FilamentUser, HasMedia
     public function getFormattedCreatedAtAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->toFormattedDateString();
+    }
+
+    public function conversations():HasMany
+    {
+        return $this->hasMany(Conversation::class);
+    }
+
+    public function messages():HasMany
+    {
+        return $this->hasMany(Message::class, 'receiver_id', 'id');
+    }
+
+    public function unreadMessages():int
+    {
+        return $this->messages()->where('unread', true)->count();
     }
 }

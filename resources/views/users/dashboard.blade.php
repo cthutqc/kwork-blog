@@ -11,6 +11,14 @@
                 <a href="{{route('users.add.article')}}" class="block text-lg rounded-md w-full bg-[#51c0ff] focus:bg-[#007bff] focus:outline-none focus:ring focus:ring-[#51c0ff] text-white py-2 text-center">
                     Добавить запись
                 </a>
+                <a href="{{route('users.chat')}}" class="relative block text-lg rounded-md w-full bg-[#51c0ff] focus:bg-[#007bff] focus:outline-none focus:ring focus:ring-[#51c0ff] text-white py-2 text-center">
+                    <span>Сообщения</span>
+                    @if($user->unreadMessages())
+                    <span class="rounded-full bg-red-600 text-white absolute -top-1 -right-1 h-6 w-6">
+                        <span class="absolute inset-x-0 text-[12px] m-auto top-1/2 -translate-y-1/2">{{$user->unreadMessages()}}</span>
+                    </span>
+                    @endif
+                </a>
             </div>
         </div>
         <div class="h-[420px] md:h-auto md:col-span-2 bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/promo.jpg')}})"></div>

@@ -15,6 +15,7 @@
     </main>
     <x-footer />
 </body>
+@stack('js')
 <livewire:scripts />
 <script>
     document.addEventListener('livewire:load', () => {
