@@ -36,6 +36,8 @@ class LoginForm extends Component implements Forms\Contracts\HasForms
 
         if(Auth::attempt($this->only(['email', 'password']))) {
             session()->flash('success', 'Поздравляем! Вы успешно вошли на сайт.');
+
+            return redirect('/user');
         } else {
             session()->flash('error', 'Введенные вами данные не найдены.');
         }
@@ -64,6 +66,9 @@ class LoginForm extends Component implements Forms\Contracts\HasForms
             });
 
             session()->flash('success', 'Поздравляем! Вы успешно зарегистрировались на сайте.');
+
+            return redirect('/user');
+
         } else {
             session()->flash('error', 'Поздравляем! Вы успешно зарегистрировались на сайте.');
         }
