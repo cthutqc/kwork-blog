@@ -46,6 +46,10 @@ class Chat extends Component
             'body' => ['required'],
         ]);
 
+        if(!isset($this->selectedConversation)) {
+            return;
+        }
+
         Message::create([
             'conversation_id' => $this->selectedConversation->id,
             'user_id' => auth()->id(),
