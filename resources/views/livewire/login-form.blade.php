@@ -56,15 +56,6 @@
                                placeholder="Email">
                     </div>
                     <div class="my-4">
-                        <input type="text"
-                               @class([
-                                     'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                                 ])
-                               x-mask:dynamic="phoneMask"
-                               wire:model="phone"
-                               placeholder="Телефон">
-                    </div>
-                    <div class="my-4">
                         <input type="password"
                                @class([
                                      'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
