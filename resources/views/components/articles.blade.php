@@ -4,7 +4,10 @@
 ])
 <x-row>
     @if($category || $search)
-        <div class="mt-22 mb-8">
+        <div @class([
+        "mb-[28px]" => \Route::is('categories.show'),
+        "mb-[48px]" => \Route::is('search.show'),
+        ])>
             <x-h1>{{$category->h1 ?? $category->name ?? 'Ви искали: ' . $search}}</x-h1>
             @if($category)
             {{ Breadcrumbs::render('category', $category) }}

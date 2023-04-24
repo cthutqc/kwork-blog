@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $articles = \App\Models\Article::take(6)->orderByDesc('created_at')->get();
+    $articles = \App\Models\Article::orderByDesc('created_at')->paginate(config('app.per_page'));
     return view('pages.home', compact('articles'));
 })->name('pages.home')
     ->middleware('enable.articles.order');
@@ -52,6 +52,15 @@ Route::middleware('auth')->group(function (){
             ->name('chat');
 
     });
+
+    Route::get('logout', function (){
+
+        \Session::flush();
+        \Auth::logout();
+
+        return redirect('/');
+
+    })->name('logout');
 
 });
 

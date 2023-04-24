@@ -10,7 +10,10 @@
                         <span class="block">Категории</span>
                     </button>
                     @if(count($categories))
-                    <div x-show="open" @click.away="open = false" class="md:w-max text-black py-4 px-10 bg-white shadow fixed inset-0 md:h-fit md:absolute md:top-full block">
+                    <div x-show="open" @click.away="open = false"
+                         class="hidden md:w-max text-black py-4 px-10 bg-white shadow fixed inset-0 md:h-fit md:absolute md:top-full"
+                         :class="{ 'hidden' : !open, 'block' : open }"
+                    >
                         <ul class="block text-left m-auto">
                             @foreach($categories as $category)
                                 <li>
@@ -38,7 +41,10 @@
                                 <span class="absolute inset-x-0 text-[10px] m-auto top-1/2 -translate-y-1/2">{{auth()->user()->unreadMessages()}}</span>
                             </span>
                         @endif
-                        <div x-show="open" @click.away="open = false" class="md:w-max text-black py-4 px-10 bg-white shadow fixed top-full right-0 md:h-fit md:absolute md:top-full block">
+                        <div x-show="open" @click.away="open = false"
+                             class="hidden md:w-max text-black py-4 px-10 bg-white shadow fixed top-full right-0 md:h-fit md:absolute md:top-full"
+                             :class="{ 'hidden' : !open, 'block' : open }"
+                        >
                             <ul class="block text-left m-auto">
                                 <li>
                                     <a href="{{route('users.dashboard')}}" class="flex space-x-2 items-center w-full py-4 transition-all duration-500 uppercase hover:translate-x-6">
@@ -52,6 +58,10 @@
                                     <a href="{{route('users.chat')}}" class="flex space-x-2 items-center w-full py-4 transition-all duration-500 uppercase hover:translate-x-6">
                                         <img src="{{asset('images/11.png')}}" class="h-8"/>
                                         <span>Чат</span>
+                                    </a>
+                                    <a href="{{route('logout')}}" class="flex space-x-2 items-center w-full py-4 transition-all duration-500 uppercase hover:translate-x-6">
+                                        <img src="{{asset('images/dbl12.png')}}" class="h-8"/>
+                                        <span>Выйти</span>
                                     </a>
                                 </li>
                             </ul>
