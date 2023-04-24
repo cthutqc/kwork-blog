@@ -31,16 +31,20 @@
                     <x-search />
                 </div>
             </div>
-            <div class="relative">
+            <div class="relative flex justify-end items-center space-x-4">
                 @auth
+                    <a href="{{route('users.chat')}}" class="flex space-x-2 items-center py-4 relative">
+                        <img src="{{asset('images/11.png')}}" class="h-6"/>
+                        <span class="block">Чат</span>
+                        @if(auth()->user()->unreadMessages())
+                            <span class="rounded-full bg-red-600 text-white absolute top-3 -right-3 h-4 w-4">
+                                <span class="absolute inset-x-0 text-[10px] m-auto top-1/2 -translate-y-1/2 w-max">{{auth()->user()->unreadMessages()}}</span>
+                            </span>
+                        @endif
+                    </a>
                     <button x-data="{open : false}" @click="open = !open" class="hidden md:flex items-center block space-x-2">
                         <img src="{{auth()->user()->getFirstMediaUrl() ? auth()->user()->getFirstMediaUrl() : asset('images/profile-placeholder.png')}}"  class="h-8 w-8 rounded-full m-auto"/>
                         <span>{{auth()->user()->name}}</span>
-                        @if(auth()->user()->unreadMessages())
-                            <span class="rounded-full bg-red-600 text-white absolute top-0 -right-1 h-4 w-4">
-                                <span class="absolute inset-x-0 text-[10px] m-auto top-1/2 -translate-y-1/2">{{auth()->user()->unreadMessages()}}</span>
-                            </span>
-                        @endif
                         <div x-show="open" @click.away="open = false"
                              class="hidden md:w-max text-black py-4 px-10 bg-white shadow fixed top-full right-0 md:h-fit md:absolute md:top-full"
                              :class="{ 'hidden' : !open, 'block' : open }"
