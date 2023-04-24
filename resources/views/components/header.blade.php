@@ -33,7 +33,7 @@
             </div>
             <div class="relative flex justify-end items-center space-x-4">
                 @auth
-                    <a href="{{route('users.chat')}}" class="flex space-x-2 items-center py-4 relative">
+                    <a href="{{route('users.chat')}}" class="hidden md:flex space-x-2 items-center py-4 relative">
                         <img src="{{asset('images/11.png')}}" class="h-6"/>
                         <span class="block">Чат</span>
                         @if(auth()->user()->unreadMessages())
@@ -43,7 +43,7 @@
                         @endif
                     </a>
                     <button x-data="{open : false}" @click="open = !open" class="hidden md:flex items-center block space-x-2">
-                        <img src="{{auth()->user()->getFirstMediaUrl() ? auth()->user()->getFirstMediaUrl() : asset('images/profile-placeholder.png')}}"  class="h-8 w-8 rounded-full m-auto"/>
+                        <img src="{{auth()->user()->getFirstMediaUrl() ? auth()->user()->getFirstMediaUrl() : asset('images/profile-placeholder.png')}}" class="h-8 w-8 rounded-full m-auto"/>
                         <span>{{auth()->user()->name}}</span>
                         <div x-show="open" @click.away="open = false"
                              class="hidden md:w-max text-black py-4 px-10 bg-white shadow fixed top-full right-0 md:h-fit md:absolute md:top-full"
