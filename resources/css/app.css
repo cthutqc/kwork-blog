@@ -5,6 +5,9 @@
 
 
 @layer base {
+    figcaption {
+        @apply !hidden;
+    }
     .description {
         @apply leading-normal;
     }
