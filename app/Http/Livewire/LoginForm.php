@@ -47,7 +47,7 @@ class LoginForm extends Component implements Forms\Contracts\HasForms
     {
         $this->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,{$user->id}',
             'password' => 'required',
         ]);
 

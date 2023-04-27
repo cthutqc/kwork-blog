@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         if(app()->isProduction()) {
             \URL::forceScheme('https');
         }
-
+        \Schema::defaultStringLength(191);
         View::composer(['components.header', 'components.sidebar'], function ($view) {
             $view->with('categories', Category::all());
         });

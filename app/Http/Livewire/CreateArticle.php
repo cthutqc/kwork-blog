@@ -65,15 +65,19 @@ class CreateArticle extends Component
             'user_id' => Auth::user()->id
         ]);
 
-        $path = Storage::putFile('photos', $this->image);
+        if($this->image) {
+            $path = Storage::putFile('photos', $this->image);
 
-        $article->addMedia(storage_path('app/' . $path))->toMediaCollection();
+            $article->addMedia(storage_path('app/' . $path))->toMediaCollection();
+        }
 
-        User::whereHas('roles', function ($q) use ($article){
-            $q->where('name', 'admin');
-        })->each(function ($user) use($article){
-            $user->notify(new NewArticleAdded($article));
-        });
+        if(app()->isProduction()) {
+            User::whereHas('roles', function ($q) use ($article){
+                $q->where('name', 'admin');
+            })->each(function ($user) use($article){
+                $user->notify(new NewArticleAdded($article));
+            });
+        }
 
         session()->flash('success', 'Статья успешно отправлена на модерацию.');
 

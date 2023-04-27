@@ -38,7 +38,7 @@
                 <select wire:model="category_id"
                     @class([
                            'border border-slate-100 rounded-sm p-4 w-full focus:outline-none focus:ring focus:ring-[#51c0ff]',
-                           'border !border-red-500' => $errors->first('meta_description'),
+                           'border !border-red-500' => $errors->first('category_id'),
                        ])>
                     <option value="">Выбрать категорию</option>
                     @foreach($categories as $category)
