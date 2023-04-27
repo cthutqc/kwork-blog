@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="relative bg-cover bg-no-repeat bg-center h-[500px]" style="background-image: url({{asset('images/home4.jpg')}})">
+    <div class="relative bg-cover bg-no-repeat bg-center h-[500px]" style="background-image: url({{$article->getFirstMediaUrl() ? $article->getFirstMediaUrl() : asset('images/home4.jpg')}})">
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
         <x-container class="absolute left-0 m-auto top-1/2 -translate-y-1/2 md:grid md:grid-cols-2">
             <div class="space-y-4">

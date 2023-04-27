@@ -121,7 +121,7 @@ class CreatePermissionTables extends Migration
 
         \App\Models\User::create([
             'name' => 'Admin',
-            'email' => 'admin@localhost.com',
+            'email' => 'admin@mypagestats.com',
             'password' => 'password'
         ]);
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('h1')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
-            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\User::class)->default(1)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();

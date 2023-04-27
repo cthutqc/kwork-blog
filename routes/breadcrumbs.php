@@ -18,6 +18,8 @@ Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 });
 
 Breadcrumbs::for('article', function (BreadcrumbTrail $trail, $article) {
-    $trail->parent('category', $article->category);
-    $trail->push($article->name, route('articles.show', $article));
+    if(isset($article->category)) {
+        $trail->parent('category', $article->category);
+        $trail->push($article->name, route('articles.show', $article));
+    }
 });

@@ -47,6 +47,7 @@ class ArticleResource extends Resource
                         ->maxLength(65535),
                     Forms\Components\Select::make('user_id')
                         ->label('Пользователь')
+                        ->default(1)
                         ->relationship('user', 'name'),
                     Forms\Components\Select::make('category_id')
                         ->label('Категория')

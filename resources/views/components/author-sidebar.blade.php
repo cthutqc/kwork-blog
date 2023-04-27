@@ -11,6 +11,8 @@
     </div>
     <div class="border-x border-b border-slate-200 bg-white p-10 rounded-b-md relative">
         <a href="{{route('profile.show', $user)}}" class="rounded-3xl text-white bg-[#56caff] font-semibold py-2 px-4 absolute inset-x-0 m-auto w-max bottom-[86%]">Посмотреть профайл</a>
+        @if(!auth()->user() || auth()->user()->id !== $user->id)
         <a href="{{auth()->user() ? route('users.chat', $user) : route('pages.login')}}" class="text-center m-auto block">Написать автору</a>
+        @endif
     </div>
 </div>
